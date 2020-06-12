@@ -5,11 +5,28 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    textTransform: "none",
+  },
+}));
+
+const onClick = () => {
+  console.log('hello universe')
+}
+
+const IndexPage = () => {
+  const classes = useStyles();
+  return (
   <Layout>
     <SEO title="Home" />
     <h1>Hi Jerry</h1>
-    <p>Welcome to your new Gatsby site.</p>
+    <Button onClick={onClick} variant="contained" color="primary" disableElevation size="medium" className={classes.button}>
+          Medium
+          </Button> 
     <p>Now go build something great.</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
@@ -17,6 +34,6 @@ const IndexPage = () => (
     <Link to="/page-2/">Go to page 2</Link> <br />
     <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
-)
+)}
 
 export default IndexPage
