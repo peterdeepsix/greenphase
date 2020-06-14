@@ -52,8 +52,8 @@ const Header = ({ siteTitle }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
+          <Typography variant="h4" className={classes.title}>
+            Green Phase
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
