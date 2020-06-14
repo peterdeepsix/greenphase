@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 
 import { makeStyles } from "@material-ui/core/styles"
 import {
@@ -9,10 +9,21 @@ import {
   Button,
   Toolbar,
   Typography,
+  Menu,
+  MenuItem,
 } from "@material-ui/core"
 import { siteMetadata } from "../../gatsby-config"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
+import Drawer from "@material-ui/core/Drawer"
+import List from "@material-ui/core/List"
+import Divider from "@material-ui/core/Divider"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import ListItemText from "@material-ui/core/ListItemText"
+import InboxIcon from "@material-ui/icons/MoveToInbox"
+import MailIcon from "@material-ui/icons/Mail"
+import clsx from "clsx"
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -30,16 +41,30 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
 }))
-
-// let cat = "string"
-
-// const jerrysCat = { jerrysKey: cat }
-
-// console.log("jerrysCat", jerrysCat)
 
 const Header = ({ siteTitle }) => {
   const classes = useStyles()
+
+  const [drawerOpen, setDrawerOpen] = useState(false)
+
+  const toggleDrawer = event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return
+    }
+
+    setDrawerOpen(!drawerOpen)
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -49,9 +74,23 @@ const Header = ({ siteTitle }) => {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            onClick={toggleDrawer}
           >
-            <MenuIcon />
+            <MenuIcon color="inherit" />
           </IconButton>
+          <Drawer open={drawerOpen} onClose={toggleDrawer}>
+            <List className={classes.list}>
+              <ListItem button>
+                <ListItemText primary="hello" />
+              </ListItem>
+              <ListItem button>
+                <ListItemText primary="hello" />
+              </ListItem>
+              <ListItem button>
+                <ListItemText primary="hello" />
+              </ListItem>
+            </List>
+          </Drawer>
           <Typography variant="h4" className={classes.title}>
             Green Phase
           </Typography>
