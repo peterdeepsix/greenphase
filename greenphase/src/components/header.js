@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   list: {
-    width: 250,
+    width: "250",
   },
   fullList: {
     width: "auto",
@@ -68,33 +68,39 @@ const Header = ({ siteTitle }) => {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar variant="regular">
+          <Typography align="justify" variant="h4" className={classes.title}>
+            Green Phase
+          </Typography>
           <IconButton
-            edge="start"
+            edge="false"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
             onClick={toggleDrawer}
+            size="large"
           >
-            <MenuIcon color="inherit" />
+            <MenuIcon color="inherit" fontSize="large" />
           </IconButton>
-          <Drawer open={drawerOpen} onClose={toggleDrawer}>
+          <Drawer anchor="top" open={drawerOpen} onClose={toggleDrawer}>
             <List className={classes.list}>
               <ListItem button>
-                <ListItemText primary="hello" />
+                <ListItemText primary="Home" />
               </ListItem>
               <ListItem button>
-                <ListItemText primary="hello" />
+                <ListItemText primary="About" />
               </ListItem>
               <ListItem button>
-                <ListItemText primary="hello" />
+                <ListItemText primary="Process" />
+              </ListItem>
+              <ListItem button>
+                <ListItemText primary="Ecology" />
+              </ListItem>
+              <ListItem button>
+                <ListItemText primary="Contact" />
               </ListItem>
             </List>
           </Drawer>
-          <Typography variant="h4" className={classes.title}>
-            Green Phase
-          </Typography>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>

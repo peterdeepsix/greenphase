@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Container disableGutters>
+    <Container disableGutters maxWidth="false">
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
     </Container>
